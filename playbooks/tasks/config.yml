@@ -1,0 +1,47 @@
+- name: zshrc symlink
+  file:
+    src: /home/sid/dotfiles/zsh/zshrc
+    dest: /home/sid/.zshrc
+    state: link
+
+- name: zsh symlink
+  file:
+    src: /home/sid/dotfiles/zsh
+    dest: /home/sid/.zsh
+    state: link
+
+- name: vim symlink
+  file:
+    src: /home/sid/dotfiles/vim
+    dest: /home/sid/.vim
+    state: link
+
+- name: tmux symlink
+  file:
+    src: /home/sid/dotfiles/tmux
+    dest: /home/sid/.tmux
+    state: link
+
+- name: tmux.conf symlink
+  file:
+    src: /home/sid/dotfiles/tmux/tmux.conf
+    dest: /home/sid/.tmux.conf
+    state: link
+
+- name: python symlink
+  file:
+    src: /home/sid/dotfiles/python
+    dest: /home/sid/.python
+    state: link
+
+- name: gitignore symlink
+  file:
+    src: /home/sid/dotfiles/git/gitignore
+    dest: /home/sid/.gitignore
+    state: link
+
+- name: gitconfig symlink
+  file:
+    src: /home/sid/dotfiles/git/gitconfig
+    dest: /home/sid/.gitconfig
+    state: link

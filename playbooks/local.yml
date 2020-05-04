@@ -9,5 +9,6 @@
   tasks:
     - include: tasks/users.yml
     - include: tasks/cron.yml
+    - include: tasks/config.yml
     - include: tasks/packages.yml
     - include: tasks/gnome.yml
