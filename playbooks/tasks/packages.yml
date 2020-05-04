@@ -10,12 +10,29 @@
   apt: 
      name: ['cmake']
 
+# Install iovior
+
+- name: Add an apt key by id from a keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 4052245BD4284CDD
+
+- apt_repository:
+    repo: deb https://repo.iovisor.org/apt/bionic bionic main
+    state: present
+
+- name: Update apt
+  apt: update_cache=yes
+
 - name: Install bcc packages
   apt: 
-     name: ['bpfcc-tools', 'bpftrace']
+     name: ['bcc-tools', 'libbcc-examples']
+
+- name: Install bpftrace
+  command: snap install bpftrace
 
 - name: Install linux headers 
   vars: 
-     uname: "4.15.0-99-generic"
+     uname: "5.0.0-050000-generic"
   apt: 
      name: ['linux-headers-{{ uname }}']
