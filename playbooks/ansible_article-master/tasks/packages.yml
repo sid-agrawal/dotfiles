@@ -1,0 +1,15 @@
+- name: Install util packages
+  apt: 
+     name: ['htop', 'mc', 'tmux', 'zsh', 'fzf', 'neovim']
+
+- name: Install pip packages
+  apt: 
+     name: ['python3-pip']
+
+- name: Install compile packages
+  apt: 
+     name: ['cmake']
+
+- name: Install bcc packages
+  apt: 
+     name: ['bcc-tools']

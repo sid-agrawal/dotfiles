@@ -1,0 +1,295 @@
+" Plugins {{{
+call plug#begin('~/.plug-vim/')
+
+" Plug 'SirVer/ultisnips'
+Plug 'bronson/vim-visual-star-search'
+Plug 'godlygeek/tabular'
+Plug 'itchyny/lightline.vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tommcdo/vim-exchange'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
+Plug 'fatih/vim-go', { 'tag': 'v1.19', 'do': ':GoUpdateBinaries' }
+
+:if has('nvim')
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+:endif
+call plug#end()            " required
+
+filetype plugin indent on    " required
+
+"}}}
+
+" Mappings {{{
+
+" Easy quit
+" nnoremap <space>Q :qall<cr>
+" nnoremap <space>q :q<cr>
+nnoremap <C-q> :q<cr>
+" nnoremap <C-Q> :qa<cr>
+
+" Count occurrences
+" nnoremap <space>c :%s///gn<CR>
+
+" Show full path of files
+nnoremap <C-g> 1<C-g>
+nnoremap 1<C-g> <C-g>
+
+" Make Y consistent with C, D, etc
+nnoremap Y y$
+
+" Move through errors quickly
+nnoremap <C-n> :cnext<CR>
+nnoremap <C-p> :cprev<CR>
+
+" Faster saving
+noremap <C-s> <Esc>:w<CR>
+
+" Clear highlights
+nnoremap <Space><Space> :nohl<CR>
+
+" Make j,k work better on long lines
+nnoremap j gj
+nnoremap k gk
+
+" Switch windows easily
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+" Switch to last buffer quickly
+nnoremap <leader><leader> <C-^>
+
+" Add space before and after
+nnoremap ]. a <Esc>
+nnoremap [. i <Esc>
+
+" For deleting a buffer without closing the window
+nnoremap <silent> <Leader>kb :BD<CR>
+
+" Isolate a line
+nnoremap <space>i O<C-o>j<C-o>o<C-o>k<ESC>
+
+" Isolate a char
+nnoremap <space>w i <esc>la <esc>h
+
+" Sort current paragraph
+nnoremap <space>S vip:sort<CR>
+
+" Command-line mappings
+cnoremap <Esc><Left> <S-Left>
+cnoremap <Esc><Right> <S-Right>
+
+" For pylint
+nnoremap <silent> <Space>y :PylintFile<CR>
+
+" For smart find
+nnoremap <silent> <space>. :FindDefinitionUnderCursor<cr>
+
+" }}}
+
+" Options {{{
+" colorscheme wombat
+" set background=dark
+" hi Folded ctermbg=black ctermfg=white
+" hi Visual ctermbg=white
+" hi Visual ctermbg=white
+" hi Search ctermbg=yellow
+set history=100
+set laststatus=2
+set showcmd
+set encoding=utf-8
+set t_Co=256
+set splitright
+filetype plugin on
+" set number
+set mouse=
+set expandtab
+set linebreak
+" set foldmethod=indent
+set foldlevel=99
+set nobackup
+" set smartcase ignorecase
+set tags+=/src/tags
+
+" Ignore tags file in vimgrep
+set wildignore+=tags
+
+" Better tab completion
+" set wildchar=<Tab> wildmenu wildmode=longest:full
+
+" spellcheck settings
+set spelllang=en
+set spellfile=$HOME/.vim/spell/en.utf-8.add
+
+" for speed
+set nofsync
+" }}}
+
+" Autocommands {{{
+
+autocmd BufNewFile,BufRead *.proto setlocal commentstring=//\ %s
+
+autocmd BufNewFile,BufRead *.go setlocal noet ts=8 sw=8 sts=8
+au FileType go setlocal foldmethod=syntax textwidth=110
+au FileType go nmap <leader>t <Plug>(go-alternate-edit)
+
+autocmd BufNewFile,BufRead /src/*/etc/cron.d/* setf crontab
+autocmd FileType crontab setlocal commentstring=#\ %s
+
+autocmd BufRead tmp.*.*
+         \ if getline(1) =~# '^\# A Perforce Change Specification\.$' |
+         \   set spell |
+         \ endif
+
+autocmd BufRead /tmp/tmp*
+         \ if getline(1) =~# '\v^Add your (\w+ )+here\.$' |
+         \   set spell |
+         \ endif
+
+autocmd BufNewFile,BufRead *.spec.ar setf spec
+
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
+" Tell vim to use marker folding for vimscript
+augroup filetype_vim
+   autocmd!
+   autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+autocmd BufNewFile,BufRead .tmux.conf set filetype=tmux
+autocmd FileType tmux setlocal foldmethod=marker
+
+" I want spellchecking for markdown files (usually used for AIDs)
+autocmd BufNewFile,BufRead *.md setlocal spell
+au BufNewFile,BufRead *.conf set ft=sh
+
+" Remove line numbers from diff files
+autocmd FileType diff setlocal nonumber
+
+" Use :vimgrep to create file outline in python files
+au BufNewFile,BufRead *.py nnoremap <buffer>
+         \ <Leader>p :vimgrep/\v^\s*(class\|def) \w+/j %<cr>:copen<cr>
+
+au FileType python setlocal foldmethod=indent
+au FileType cpp setlocal foldmethod=syntax
+
+" awk comments
+autocmd FileType awk setlocal commentstring=#\ %s
+
+" ini comments
+autocmd BufNewFile,BufRead *.ini setlocal commentstring=#\ %s
+
+
+autocmd FileType sql setlocal commentstring=--\ %s
+
+" }}}
+
+" Functions {{{
+function! ToggleOption(currValue, cmd)
+   if a:currValue
+      if match(a:cmd, '=.*$') != -1
+         execute "set " . substitute(a:cmd, '=\zs.*$', '', '')
+      else
+         execute "set no" . a:cmd
+      endif
+   else
+      execute "set " . a:cmd
+   endif
+endfunction
+nnoremap <silent> <space>v :set paste!<cr>
+nnoremap <silent> <space>s :set spell!<cr>
+
+function! ToggleCc()
+   if &cc 
+      set cc=
+   else
+      if &filetype == 'go'
+         let linelen = 120
+      else
+         let linelen = 85
+      endif
+      execute printf("set cc=%d", linelen)
+   endif
+endfunction
+nnoremap <silent> <space>\| :call ToggleCc()<cr>
+
+function! InsertTimestamp()
+   execute ':normal! a ' . printf("-%s %s", $USER, strftime("%F"))
+endfunction
+nnoremap <silent> <space>t :call InsertTimestamp()<cr>
+
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
+" }}}
+
+
+set wildignore+=tmp*,*.so,*.swp,*.zip     " Linux/MacOSX
+
+" ack.vim
+let g:ack_default_options = " -H --nocolor --nogroup --column"
+
+" airline
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
+
+" Fzf
+nnoremap <silent> <Space>f :Files<CR>
+nnoremap <silent> <Space>b :Buffers<CR>
+" imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file)
+imap <c-x><c-l> <plug>(fzf-complete-buffer-line)
+
+let g:go_version_warning = 0
+let g:go_fmt_command = "goimports"
+let g:go_null_module_warning = 0
+let g:go_info_mode = 'gocode'
+let g:go_def_mode = 'godef'
+
+" Go linting
+" set rtp+=~/go-local/src/golang.org/x/lint/misc/vim
+
+" }}}
+" vim: foldlevel=0
+
+
+" sid's settings
+set foldlevel=20
+hi Comment    ctermfg=darkGreen
+hi MatchParen cterm=none ctermbg=green ctermfg=blue
+
+" Better colors for diff
+highlight DiffAdd    cterm=bold ctermfg=DarkGreen ctermbg=17 
+highlight DiffDelete cterm=bold ctermfg=DarkRed ctermbg=17 
+highlight DiffChange cterm=bold ctermfg=DarkRed ctermbg=17
+highlight DiffText   cterm=bold ctermfg=DarkRed ctermbg=88 
+
+
+" for touchbar
+vnoremap jj <Esc>
+inoremap jk <Esc>
+
+" enable numbering
+set nu
+
+let g:deoplete#enable_at_startup = 1

@@ -1,0 +1,6 @@
+.*.sw[po]
+#*
+.sw[po]
+vim/.netrwhist
+zsh/completion/command/_hello
+zsh/untracked/*

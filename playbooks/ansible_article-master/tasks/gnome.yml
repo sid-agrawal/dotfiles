@@ -1,0 +1,24 @@
+# - name: Install arc theme
+#   apt: name=arc-theme
+
+- name: Install psutil package
+  apt: name=python-psutil
+
+# - name: Copy wallpaper file
+#   copy: src=files/wallpaper.jpg dest=/home/jay/.wallpaper.jpg owner=jay group=jay mode=600
+
+# - name: Set GNOME wallpaper
+#   become_user: jay
+#   dconf: key="/org/gnome/desktop/background/picture-uri" value="'file:///home/jay/.wallpaper.jpg'"
+
+# - name: Copy lockscreenfile
+#   become_user: jay
+#   copy: src=files/lockscreen.jpg dest=/home/jay/.lockscreen.jpg owner=jay group=jay mode=600
+
+# - name: Set lock screen background
+#   become_user: jay
+#   dconf: key="/org/gnome/desktop/screensaver/picture-uri" value="'file:///home/jay/.lockscreen.jpg'"
+
+# - name: Set GTK theme
+#   become_user: jay
+#   dconf: key="/org/gnome/desktop/interface/gtk-theme" value="'Arc'"

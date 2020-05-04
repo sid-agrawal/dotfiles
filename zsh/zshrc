@@ -1,0 +1,108 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="my-gnzh"
+
+# Uncomment this to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how often before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want to disable command autocorrection
+# DISABLE_CORRECTION="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment following line if you want to disable marking untracked files under
+# VCS as dirty. This makes repository status check for large repositories much,
+# much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# add custom completion scripts
+fpath=(~/.zsh/functions ~/.zsh/completion ~/.zsh/completion/*(/N) $fpath)
+
+plugins=(golang git zsh_reload)
+source $ZSH/oh-my-zsh.sh
+
+# Fuck you omz.
+unsetopt autocd
+
+for func in $^fpath/*(N-.x:t); autoload $func
+
+for fn in ~/.zsh/functions/*(.N:t); do
+   autoload -Uz $fn
+done
+
+# automatically remove duplicates from these arrays
+typeset -U path cdpath fpath manpath
+
+autoload -Uz zmv
+autoload -Uz zcalc
+autoload -Uz calendar calendar_edit calendar_showdate
+
+if [[ -d ~/.zsh/untracked/helpfiles ]]; then
+   HELPDIR=~/.zsh/untracked/helpfiles
+   unalias run-help
+   autoload run-help
+fi
+
+# compsys initialization
+autoload -Uz compinit
+compinit
+
+setopt auto_menu
+setopt complete_in_word
+
+# Customize to your needs...
+export PATH=$PATH:/home/sid/bin:/usr/lib/ccache:/home/sid/bin:/usr/NX/bin:/usr/lib64/ccache:/usr/local/bin:/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin
+
+export PYTHONSTARTUP=/home/sid/.python/startup.py
+export TMUX_TMPDIR=$HOME/tmux_tmpdir
+
+# oh my zsh adds this alias and it conflicts with the p4 wildcard
+for a in '...' '....' '.....' '......'; do 
+   unalias $a
+done
+
+HISTSIZE=10000
+SAVEHIST=10000
+
+READNULLCMD=less
+# Use pygmentize as colorizer for less, if it exists.
+# (( $+commands[pygmentize] )) && export LESSOPEN="|pygmentize -f terminal -g %s"
+
+# Don't like NOMATCH. Its annoying when grabbing remote files.
+setopt extendedglob
+unsetopt NOMATCH
+
+# Fix a problem with ArFilDirCompeltions.sh
+_tilde() { return 0 } # Make this just return zero
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+for f in ~/.zsh/startup/*.zsh(.N); do
+   source $f
+done
+
+# For using C-s with vi
+stty ixany
+stty ixoff -ixon
+
+# sid's settings
+export GOPATH=/home/sid/go
+export GOROOT=/usr/lib/go
+
+# Enable nvim
+export EDITOR=nvim
+export VISUAL=nvim
