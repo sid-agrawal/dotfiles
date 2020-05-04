@@ -1,47 +1,113 @@
+- name: change shell to zsh
+  command: chsh -s /usr/bin/zsh sid
+
+- name: Clone oh my zsh
+  git:
+    repo: https://github.com/ohmyzsh/ohmyzsh.git
+    dest: /home/sid/.oh-my-zsh
+
+- name: copy zsh theme to oh my zsh 
+  copy:
+    src: /home/sid/dotfiles/zsh/themes/my-gnzh.zsh-theme
+    dest: /home/sid/.oh-my-zsh/themes/my-gnzh.zsh-theme
+
 - name: zshrc symlink
   file:
     src: /home/sid/dotfiles/zsh/zshrc
     dest: /home/sid/.zshrc
     state: link
+    owner: sid
 
 - name: zsh symlink
   file:
     src: /home/sid/dotfiles/zsh
     dest: /home/sid/.zsh
     state: link
+    owner: sid
+
+- name: Clone fzf
+  git:
+    repo: https://github.com/junegunn/fzf.git
+    dest: /home/sid/.fzf
+
+- name: change fzf dir perms
+  file:
+    path: /home/sid/.fzf
+    owner: sid
+
+- name: compile fzf
+  command: 
+    path: /home/sid/.fzf
+    owner: sid
+
+
+
 
 - name: vim symlink
   file:
     src: /home/sid/dotfiles/vim
     dest: /home/sid/.vim
     state: link
+    owner: sid
+
+- name: vimrc symlink
+  file:
+    src: /home/sid/dotfiles/vim/vimrc
+    dest: /home/sid/.vimrc
+    state: link
+    owner: sid
+
+- name: nvim config dir
+  file:
+    path: /home/sid/.config/nvim
+    state: directory
+    owner: sid
+
+- name: nvim rc symlink
+  file:
+    src: /home/sid/dotfiles/vim/vimrc
+    dest: /home/sid/.config/nvim/init.vim
+    state: link
+    owner: sid
 
 - name: tmux symlink
   file:
     src: /home/sid/dotfiles/tmux
     dest: /home/sid/.tmux
     state: link
+    owner: sid
 
 - name: tmux.conf symlink
   file:
     src: /home/sid/dotfiles/tmux/tmux.conf
     dest: /home/sid/.tmux.conf
     state: link
+    owner: sid
+
+- name: make tmux dir
+  file:
+    path: /home/sid/tmux_tmpdir
+    state: directory
+    owner: sid
+   
 
 - name: python symlink
   file:
     src: /home/sid/dotfiles/python
     dest: /home/sid/.python
     state: link
+    owner: sid
 
 - name: gitignore symlink
   file:
     src: /home/sid/dotfiles/git/gitignore
     dest: /home/sid/.gitignore
     state: link
+    owner: sid
 
 - name: gitconfig symlink
   file:
     src: /home/sid/dotfiles/git/gitconfig
     dest: /home/sid/.gitconfig
     state: link
+    owner: sid

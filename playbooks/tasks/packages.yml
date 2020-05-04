@@ -1,6 +1,6 @@
 - name: Install util packages
   apt: 
-     name: ['htop', 'mc', 'tmux', 'zsh', 'fzf', 'neovim', 'git']
+     name: ['htop', 'mc', 'tmux', 'zsh', 'neovim', 'git', 'ack', 'mosh', 'golang']
 
 - name: Install pip packages
   apt: 
@@ -12,4 +12,10 @@
 
 - name: Install bcc packages
   apt: 
-     name: ['bcc-tools']
+     name: ['bpfcc-tools']
+
+- name: Install linux headers 
+  vars: 
+     uname: "4.15.0-99-generic"
+  apt: 
+     name: ['linux-headers-{{ uname }}']

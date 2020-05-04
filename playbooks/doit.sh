@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ansible-playbook -vv ./local.yml
+ansible-playbook -vv -K ./local.yml

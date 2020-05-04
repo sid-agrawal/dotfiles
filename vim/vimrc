@@ -1,5 +1,5 @@
 " Plugins {{{
-call plug#begin('~/.plug-vim/')
+call plug#begin('~/vim/plugins/')
 
 " Plug 'SirVer/ultisnips'
 Plug 'bronson/vim-visual-star-search'
@@ -21,10 +21,7 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'fatih/vim-go', { 'tag': 'v1.19', 'do': ':GoUpdateBinaries' }
-
-:if has('nvim')
-   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-:endif
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()            " required
 
 filetype plugin indent on    " required
