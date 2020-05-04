@@ -12,7 +12,7 @@
 
 - name: Install bcc packages
   apt: 
-     name: ['bpfcc-tools']
+     name: ['bpfcc-tools', 'bpftrace']
 
 - name: Install linux headers 
   vars: 
