@@ -36,12 +36,7 @@
     owner: sid
 
 - name: compile fzf
-  command: 
-    path: /home/sid/.fzf
-    owner: sid
-
-
-
+  command: /home/sid/.fzf/install
 
 - name: vim symlink
   file:
@@ -57,6 +52,16 @@
     state: link
     owner: sid
 
+- name: Download latest nvim
+  get_url: 
+     url: https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
+     dest: /usr/bin/vim
+
+- name: pip install pyvim
+  pip:
+    name: ['pyvim', 'neovim']
+    executable: pip3
+
 - name: nvim config dir
   file:
     path: /home/sid/.config/nvim
@@ -69,6 +74,15 @@
     dest: /home/sid/.config/nvim/init.vim
     state: link
     owner: sid
+
+- name: nvim autoload symlink
+  file:
+    src: /home/sid/dotfiles/vim/autoload
+    dest: /home/sid/.config/nvim/autoload
+    state: link
+    owner: sid
+
+
 
 - name: tmux symlink
   file:
