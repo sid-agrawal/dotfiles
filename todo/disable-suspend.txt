@@ -1,0 +1,4 @@
+sudo vim /etc/systemd/logind.conf
+Add:
+HandleLidSwitch=ignore
+systemctl restart systemd-logind.service
