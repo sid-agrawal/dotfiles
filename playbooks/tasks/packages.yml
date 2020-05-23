@@ -1,6 +1,6 @@
 - name: Install util packages
   apt: 
-     name: ['htop', 'mc', 'tmux', 'zsh', 'neovim', 'git', 'ack', 'mosh', 'golang']
+     name: ['htop', 'mc', 'tmux', 'zsh', 'neovim', 'git', 'ack', 'mosh', 'golang', 'curl']
 
 - name: Install pip packages
   apt: 
