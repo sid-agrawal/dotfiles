@@ -4,6 +4,12 @@
 - name: Install psutil package
   apt: name=python-psutil
 
+- name: Ignore lid closure
+  lineinfile:
+    path: /etc/systemd/logind.conf
+    regexp: '^#HandleLidSwitch'
+    line: 'HandleLidSwitch=ignore'
+
 # - name: Copy wallpaper file
 #   copy: src=files/wallpaper.jpg dest=/home/jay/.wallpaper.jpg owner=jay group=jay mode=600
 
