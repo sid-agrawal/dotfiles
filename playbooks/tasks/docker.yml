@@ -1,0 +1,37 @@
+- name: Install util packages to install docker
+  apt: 
+     name: [ 'apt-transport-https', 'ca-certificates', 'gnupg-agent', 'software-properties-common' ]
+  tags:
+     - docker     
+
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags:
+     - docker     
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+  tags:
+     - docker     
+
+- name: Update apt and install docker packages
+  apt: 
+     name: [ 'docker-ce-cli', 'containerd.io', 'docker-ce' ]
+     update_cache: yes 
+     state: latest
+  tags:
+     - docker     
+
+- name: Install Docker Module for Python
+  pip:
+    name: docker
+    executable: pip3
+  tags:
+     - docker     
+
+
+

@@ -12,3 +12,4 @@
     - include: tasks/packages.yml
     - include: tasks/config.yml
     - include: tasks/gnome.yml
+    - include: tasks/docker.yml
