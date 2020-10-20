@@ -139,7 +139,7 @@ set nofsync
 
 autocmd BufNewFile,BufRead *.proto setlocal commentstring=//\ %s
 
-autocmd BufNewFile,BufRead *.go setlocal noet ts=8 sw=8 sts=8
+autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=8 sts=8
 au FileType go setlocal foldmethod=syntax textwidth=110
 au FileType go nmap <leader>t <Plug>(go-alternate-edit)
 
