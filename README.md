@@ -1,4 +1,4 @@
-Steps to do when setting up a new machine:
+Steps to do when setting up a new machine using `ansible`:
 
 Install:
 - openssh-server
