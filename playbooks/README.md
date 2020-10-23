@@ -1,2 +1,2 @@
-# ansible_article
-Example Ansible configuration to accompany a series of articles I wrote on opensource.com
+# Ansible for Laptop
+Ansible files for setting up a freshly installed OS.
