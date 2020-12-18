@@ -3,7 +3,7 @@ Steps to do when setting up a new machine using `ansible`:
 Install:
 - openssh-server
 - git
-- anible
+- ansible
 
 Other steps:
 - ssh-keygen
