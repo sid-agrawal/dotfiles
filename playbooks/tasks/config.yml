@@ -44,9 +44,9 @@
      url: https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
      dest: /usr/bin/vim
 
-- name: pip install pyvim
+- name: pip install many things
   pip:
-    name: ['pyvim', 'neovim']
+    name: ['pyvim', 'neovim', 'python-language-server[all]']
     executable: pip3
 
 - name: nvim config dir
@@ -68,8 +68,6 @@
     dest: /home/siagraw/.config/nvim/autoload
     state: link
     owner: siagraw
-
-
 
 - name: tmux symlink
   file:
