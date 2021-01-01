@@ -1,56 +1,43 @@
 - name: change shell to zsh
-  command: chsh -s /usr/bin/zsh sid
+  command: chsh -s /usr/bin/zsh siagraw
 
 - name: Clone oh my zsh
   git:
     repo: https://github.com/ohmyzsh/ohmyzsh.git
-    dest: /home/sid/.oh-my-zsh
+    dest: /home/siagraw/.oh-my-zsh
 
 - name: copy zsh theme to oh my zsh 
   copy:
-    src: /home/sid/dotfiles/zsh/themes/my-gnzh.zsh-theme
-    dest: /home/sid/.oh-my-zsh/themes/my-gnzh.zsh-theme
+    src: /home/siagraw/dotfiles/zsh/themes/my-gnzh.zsh-theme
+    dest: /home/siagraw/.oh-my-zsh/themes/my-gnzh.zsh-theme
 
 - name: zshrc symlink
   file:
-    src: /home/sid/dotfiles/zsh/zshrc
-    dest: /home/sid/.zshrc
+    src: /home/siagraw/dotfiles/zsh/zshrc
+    dest: /home/siagraw/.zshrc
     state: link
-    owner: sid
+    owner: siagraw
 
 - name: zsh symlink
   file:
-    src: /home/sid/dotfiles/zsh
-    dest: /home/sid/.zsh
+    src: /home/siagraw/dotfiles/zsh
+    dest: /home/siagraw/.zsh
     state: link
-    owner: sid
-
-- name: Clone fzf
-  git:
-    repo: https://github.com/junegunn/fzf.git
-    dest: /home/sid/.fzf
-
-- name: change fzf dir perms
-  file:
-    path: /home/sid/.fzf
-    owner: sid
-
-- name: compile fzf
-  command: /home/sid/.fzf/install
+    owner: siagraw
 
 - name: vim symlink
   file:
-    src: /home/sid/dotfiles/vim
-    dest: /home/sid/.vim
+    src: /home/siagraw/dotfiles/vim
+    dest: /home/siagraw/.vim
     state: link
-    owner: sid
+    owner: siagraw
 
 - name: vimrc symlink
   file:
-    src: /home/sid/dotfiles/vim/vimrc
-    dest: /home/sid/.vimrc
+    src: /home/siagraw/dotfiles/vim/vimrc
+    dest: /home/siagraw/.vimrc
     state: link
-    owner: sid
+    owner: siagraw
 
 - name: Download latest nvim
   get_url: 
@@ -64,64 +51,64 @@
 
 - name: nvim config dir
   file:
-    path: /home/sid/.config/nvim
+    path: /home/siagraw/.config/nvim
     state: directory
-    owner: sid
+    owner: siagraw
 
 - name: nvim rc symlink
   file:
-    src: /home/sid/dotfiles/vim/vimrc
-    dest: /home/sid/.config/nvim/init.vim
+    src: /home/siagraw/dotfiles/vim/vimrc
+    dest: /home/siagraw/.config/nvim/init.vim
     state: link
-    owner: sid
+    owner: siagraw
 
 - name: nvim autoload symlink
   file:
-    src: /home/sid/dotfiles/vim/autoload
-    dest: /home/sid/.config/nvim/autoload
+    src: /home/siagraw/dotfiles/vim/autoload
+    dest: /home/siagraw/.config/nvim/autoload
     state: link
-    owner: sid
+    owner: siagraw
 
 
 
 - name: tmux symlink
   file:
-    src: /home/sid/dotfiles/tmux
-    dest: /home/sid/.tmux
+    src: /home/siagraw/dotfiles/tmux
+    dest: /home/siagraw/.tmux
     state: link
-    owner: sid
+    owner: siagraw
 
 - name: tmux.conf symlink
   file:
-    src: /home/sid/dotfiles/tmux/tmux.conf
-    dest: /home/sid/.tmux.conf
+    src: /home/siagraw/dotfiles/tmux/tmux.conf
+    dest: /home/siagraw/.tmux.conf
     state: link
-    owner: sid
+    owner: siagraw
 
 - name: make tmux dir
   file:
-    path: /home/sid/tmux_tmpdir
+    path: /home/siagraw/tmux_tmpdir
     state: directory
-    owner: sid
+    owner: siagraw
    
 
 - name: python symlink
   file:
-    src: /home/sid/dotfiles/python
-    dest: /home/sid/.python
+    src: /home/siagraw/dotfiles/python
+    dest: /home/siagraw/.python
     state: link
-    owner: sid
+    owner: siagraw
 
 - name: gitignore symlink
   file:
-    src: /home/sid/dotfiles/git/gitignore
-    dest: /home/sid/.gitignore
+    src: /home/siagraw/dotfiles/git/gitignore
+    dest: /home/siagraw/.gitignore
     state: link
-    owner: sid
+    owner: siagraw
 
 - name: gitconfig symlink
   file:
-    src: /home/sid/dotfiles/git/gitconfig
-    dest: /home/sid/.gitconfig
+    src: /home/siagraw/dotfiles/git/gitconfig
+    dest: /home/siagraw/.gitconfig
     state: link
-    owner: sid
+    owner: siagraw

@@ -66,9 +66,9 @@ setopt auto_menu
 setopt complete_in_word
 
 # Customize to your needs...
-export PATH=$PATH:/home/sid/bin:/usr/lib/ccache:/home/sid/bin:/usr/NX/bin:/usr/lib64/ccache:/usr/local/bin:/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:/home/sid/go/bin
+export PATH=$PATH:/home/siagraw/bin:/usr/lib/ccache:/home/siagraw/bin:/usr/NX/bin:/usr/lib64/ccache:/usr/local/bin:/bin:/usr/bin:/usr/sbin:/sbin:/usr/local/sbin:/home/siagraw/go/bin
 
-export PYTHONSTARTUP=/home/sid/.python/startup.py
+export PYTHONSTARTUP=/home/siagraw/.python/startup.py
 export TMUX_TMPDIR=$HOME/tmux_tmpdir
 
 # oh my zsh adds this alias and it conflicts with the p4 wildcard
@@ -99,8 +99,8 @@ done
 stty ixany
 stty ixoff -ixon
 
-# sid's settings
-export GOPATH=/home/sid/go
+# siagraw's settings
+export GOPATH=/home/siagraw/go
 export GOROOT=/usr/lib/go
 
 # Enable nvim
@@ -108,7 +108,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 # added by travis gem
-[ ! -s /home/sid/.travis/travis.sh ] || source /home/sid/.travis/travis.sh
+[ ! -s /home/siagraw/.travis/travis.sh ] || source /home/siagraw/.travis/travis.sh
 
 # Required by gpg
 export GPG_TTY=$(tty)
