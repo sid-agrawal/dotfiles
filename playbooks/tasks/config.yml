@@ -6,10 +6,19 @@
     repo: https://github.com/ohmyzsh/ohmyzsh.git
     dest: /home/siagraw/.oh-my-zsh
 
-- name: copy zsh theme to oh my zsh 
-  copy:
+- name: symlink my-gnzh zsh theme to oh my zsh
+  file:
     src: /home/siagraw/dotfiles/zsh/themes/my-gnzh.zsh-theme
     dest: /home/siagraw/.oh-my-zsh/themes/my-gnzh.zsh-theme
+    state: link
+    owner: siagraw
+
+- name: symlink my-simple zsh theme to oh my zsh
+  file:
+    src: /home/siagraw/dotfiles/zsh/themes/my-simple.zsh-theme
+    dest: /home/siagraw/.oh-my-zsh/themes/my-simple.zsh-theme
+    state: link
+    owner: siagraw
 
 - name: zshrc symlink
   file:
