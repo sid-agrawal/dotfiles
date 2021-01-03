@@ -97,7 +97,6 @@
     path: /home/siagraw/tmux_tmpdir
     state: directory
     owner: siagraw
-   
 
 - name: python symlink
   file:
@@ -117,5 +116,19 @@
   file:
     src: /home/siagraw/dotfiles/git/gitconfig
     dest: /home/siagraw/.gitconfig
+    state: link
+    owner: siagraw
+
+- name: make .emacs.d dir
+  file:
+    path: /home/siagraw/.emacs.d
+    state: directory
+    owner: siagraw
+
+
+- name: emacs init.el symlink
+  file:
+    src: /home/siagraw/dotfiles/emacs.d/init.el
+    dest: /home/siagraw/.emacs.d/init.el
     state: link
     owner: siagraw

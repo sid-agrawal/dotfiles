@@ -4,3 +4,15 @@
 vim/.netrwhist
 zsh/completion/command/_hello
 zsh/untracked/*
+
+\#*
+*.sqlite
+*~
+auto-save-list/
+.lsp-session-v1
+elpa/
+init.el~
+projectile-bookmarks.eld
+projectile.cache
+transient/
+server/
