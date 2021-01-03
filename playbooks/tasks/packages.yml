@@ -2,6 +2,13 @@
   apt:
      name: ['htop', 'mc', 'tmux', 'zsh', 'neovim', 'git', 'ack', 'mosh', 'golang', 'curl', 'rubygems', 'tree', 'emacs', 'fzf']
 
+- name: Install package Ergodox config
+  apt:
+     name: ['libusb-dev']
+# need more steps, to have wally work.
+# See
+# https://github.com/zsa/wally/wiki/Linux-install
+     
 - name: Install pip packages
   apt:
      name: ['python3-pip']
