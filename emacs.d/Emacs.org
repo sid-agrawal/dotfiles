@@ -871,6 +871,11 @@ The downsides to Eshell are that it can be harder to configure than other packag
 
 We will be covering Eshell more in future videos highlighting other things you can do with it.
 
+To capture the output of a command in an emacs buffer:
+#+begin_src bash :tangle no
+    echo ll > #<buffer buf-name>
+#+end_src
+
 For more thoughts on Eshell, check out these articles by Pierre Neidhardt:
 - https://ambrevar.xyz/emacs-eshell/index.html
 - https://ambrevar.xyz/emacs-eshell-versus-shell/index.html
