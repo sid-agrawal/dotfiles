@@ -693,21 +693,44 @@ Also, emacs needs to know about where to find go binary and go sources so the PA
     go get golang.org/x/tools/gopls@latest
 #+end_src
 
-*** Python
+**** Python
 
-This is a basic configuration for the python language so that =.py= files activate =py-mode= when opened.  We're also adding a hook to =py-mode-hook= to call =lsp-deferred= so that we activate =lsp-mode= to get LSP features every time we edit python code.
+We use =lsp-mode= and =dap-mode= to provide a more complete development environment for Python in Emacs.  Check out [[https://emacs-lsp.github.io/lsp-mode/page/lsp-pyls/][the =pyls= configuration]] in the =lsp-mode= documentation for more details.
+
+Make sure you have the =pyls= language server installed before trying =lsp-mode=!
+
+#+begin_src sh :tangle no
+
+pip install --user "python-language-server[all]"
+
+#+end_src
+
+There are a number of other language servers for Python so if you find that =pyls= doesn't work for you, consult the =lsp-mode= [[https://emacs-lsp.github.io/lsp-mode/page/languages/][language configuration documentation]] to try the others!
 
 #+begin_src emacs-lisp
 
   (use-package python-mode
-    :mode "\\.py\\'"
-    :hook (python-mode . lsp-deferred))
+    :ensure t
+    :hook (python-mode . lsp-deferred)
+    :custom
+    ;; NOTE: Set these if Python 3 is called "python3" on your system!
+    ;; (python-shell-interpreter "python3")
+    ;; (dap-python-executable "python3")
+    (dap-python-debugger 'debugpy)
+    :config
+    (require 'dap-python))
+
+
 #+end_src
 
-*Important note!*  For =lsp-mode= to work with python  you will need to install a language server on your machine.
+You can use the pyvenv package to use =virtualenv= environments in Emacs.  The =pyvenv-activate= command should configure Emacs to cause =lsp-mode= and =dap-mode= to use the virtual environment when they are loaded, just select the path to your virtual environment before loading your project.
 
-#+begin_src shell :tangle no
-    pip3 install python-language-server[all]
+#+begin_src emacs-lisp
+
+  (use-package pyvenv
+    :config
+    (pyvenv-mode 1))
+
 #+end_src
 
 ** Company Mode
