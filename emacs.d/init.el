@@ -337,6 +337,104 @@
 
 (push '("conf-unix" . conf-unix) org-src-lang-modes)
 
+(setq papers-dir (expand-file-name "~/Dropbox/Documents/roam/")
+      papers-pdfs (concat papers-dir "lib/")
+      papers-notes (concat papers-dir "books/")
+      papers-refs (concat papers-dir "index.bib"))
+(use-package org-roam
+  :ensure t
+  :hook ((after-init-hook . org-roam)
+         (smartpartents-strict)
+         (org-roam-mode . (lambda ()
+                            (set (make-local-variable 'company-backends)
+                                 '((company-capf))))))
+  :custom
+  (org-roam-db-location "~/.config/emacs/org-roam.db")
+  (org-roam-directory "~/Dropbox/Documents/roam/")
+  (org-roam-link-auto-replace t)
+  (org-roam-tag-sources '(prop all-directories))
+  (org-roam-buffer-window-parameters '((no-delete-other-windows . t)))
+  :bind (:map org-roam-mode-map
+              ("C-c n r" . org-roam)
+              ("C-c n f" . org-roam-find-file)
+              ("C-c n g" . org-roam-graph)
+              ("C-c n t" . org-roam-dailies-today)
+              ("C-c n h" . org-roam-jump-to-index)              
+              :map org-mode-map
+              ("C-c n i" . org-roam-insert)))
+
+(use-package org-roam-server
+  :ensure t
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 8080
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
+
+;; (use-package org-roam-bibtex
+;;   :ensure t
+;;   :after org-roam
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :bind (:map org-mode-map
+;;               (("C-c n a" . orb-note-actions))))
+
+ (use-package deft
+  :ensure t
+  :bind ("C-c n l" . deft)
+  :custom
+  (deft-recursive t)
+  (deft-use-filter-string-for-filename t)
+  (deft-default-extension "org")
+  (deft-directory papers-dir))
+
+(use-package nov
+  :ensure t
+  :mode ("\\.epub\\'" . nov-mode))
+
+(use-package pdf-tools
+  :ensure t
+  :hook (pdf-view-mode . pdf-view-midnight-minor-mode)
+  :config
+  (require 'pdf-occur)
+  (pdf-tools-install))
+
+(use-package org-ref
+  :ensure t
+  :bind ("C-c n r" . org-ref-bibtex-hydra/body)
+  :config
+  ;; (setq reftex-default-bibliography (list papers-refs))
+  (setq org-ref-completion-library 'org-ref-ivy-cite
+        org-ref-bibliography-notes papers-notes
+        org-ref-default-bibliography (list papers-refs)
+        org-ref-pdf-directory papers-pdfs))
+
+(use-package org-noter
+  :ensure t
+  :commands org-noter
+  :custom
+  (org-noter-default-notes-file-names '("index-org"))
+        (org-noter-notes-search-path (list "~/Dropbox/Documents/roam/"))
+        (org-noter-auto-save-last-location t)
+        (org-noter-doc-split-fraction '(0.8 . 0.8))
+        (org-noter-always-create-frame nil)
+        (org-noter-insert-note-no-questions t)
+        (org-noter-notes-window-location 'vertical-split))
+
+(use-package ivy-bibtex
+  :ensure t
+  :after ivy
+  :custom
+  (bibtex-completion-bibliography papers-refs)
+  (bibtex-completion-library-path papers-pdfs)
+  (bibtex-completion-notes-path papers-notes))
+
 ;; This is needed as of Org 9.2
 ;; (require 'org-tempo)
 
@@ -428,8 +526,8 @@
   :hook (python-mode . lsp-deferred)
   :custom
   ;; NOTE: Set these if Python 3 is called "python3" on your system!
-  ;; (python-shell-interpreter "python3")
-  ;; (dap-python-executable "python3")
+  (python-shell-interpreter "python3")
+  (dap-python-executable "python3")
   (dap-python-debugger 'debugpy)
   :config
   (require 'dap-python))
