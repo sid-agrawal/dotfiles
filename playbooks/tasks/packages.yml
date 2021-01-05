@@ -2,6 +2,10 @@
   apt:
      name: ['htop', 'mc', 'tmux', 'zsh', 'neovim', 'git', 'ack', 'mosh', 'golang', 'curl', 'rubygems', 'tree', 'emacs', 'fzf']
 
+- name: Install roam related packages
+  apt:
+     name: ['graphviz', 'sqlite3']
+
 - name: Install package Ergodox config
   apt:
      name: ['libusb-dev']
