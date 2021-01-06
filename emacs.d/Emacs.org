@@ -100,8 +100,42 @@ This section configures basic UI settings that remove unneeded elements to make 
 
 #+end_src
 
-** Font Configuration
+** Window Helpers
+Some settins inspired from [[https://github.com/daviwil/emacs-from-scratch/blob/aa344276b42f8abaf1fc7326c7ceda28ea5cf750/show-notes/Emacs-Tips-05.org#buffer-move-or-moving-buffers-between-windows][here.]] The [[https://www.youtube.com/watch?v=gbdE7oZEdtA&list=PLEoMzSkcN8oMHJ6Xil1YdnYtlWd5hHZql&index=5][is here]].
+*** winner-mode
 
+=winner-mode= provides useful functions for undoing and redoing window configurations:
+
+- =winner-undo= (~C-c left~ or ~C-w u~ bound below)
+- =winner-redo= (~C-c right~ or ~C-w U~ bound below)
+
+#+begin_src emacs-lisp
+
+  (use-package winner-mode
+    :ensure nil
+    :bind (:map evil-window-map
+           ("u" . winner-undo)
+           ("U" . winner-redo))
+    :config
+    (winner-mode))
+#+end_src
+
+*** ace-window
+
+[[https://github.com/abo-abo/ace-window][ace-window]] makes it easy to jump between visible windows in your Emacs frame, just run the =ace-window= command and press the number displayed in the upper left corner of the window you want to switch to.  It also enables you to swap, delete, and move windows using similar functionality.
+
+Tip from *Cedrif Daf*: Set =aw-keys= to home-row keys for more convenience:
+#+begin_src emacs-lisp
+
+  (use-package ace-window)
+
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (global-set-key (kbd "C-x w") 'ace-window)
+
+#+end_src
+
+
+** Font Configuration
 I am using the [[https://github.com/tonsky/FiraCode][Fira Code]] and [[https://fonts.google.com/specimen/Cantarell][Cantarell]] fonts for this configuration which will more than likely need to be installed on your machine.  Both can usually be found in the various Linux distro package managers or downloaded from the links above.
 
 #+begin_src emacs-lisp

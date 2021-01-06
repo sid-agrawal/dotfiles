@@ -59,6 +59,19 @@
                 eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+(use-package winner-mode
+  :ensure nil
+  :bind (:map evil-window-map
+         ("u" . winner-undo)
+         ("U" . winner-redo))
+  :config
+  (winner-mode))
+
+(use-package ace-window)
+
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(global-set-key (kbd "C-x w") 'ace-window)
+
 (set-face-attribute 'default nil :font "Fira Code Retina" :height efs/default-font-size)
 
 ;; Set the fixed pitch face
