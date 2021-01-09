@@ -689,3 +689,38 @@
   :config
   (evil-collection-define-key 'normal 'dired-mode-map
     "H" 'dired-hide-dotfiles-mode))
+
+(use-package mu4e
+  :ensure nil
+  :config
+
+  ;; This is set to 't' to avoid mail syncing issues when using mbsync
+  (setq mu4e-change-filenames-when-moving t)
+
+  ;; Refresh mail using isync every 10 minutes
+  (setq mu4e-update-interval (* 10 60))
+  (setq mu4e-get-mail-command "mbsync -a")
+  (setq mu4e-maildir "~/Mail")
+
+  (setq mu4e-contexts
+        (list
+         ;; Work account
+         (make-mu4e-context
+          :name "UBC"
+          :match-func
+          (lambda (msg)
+            (when msg
+              (string-prefix-p "/UBC" (mu4e-message-field msg :maildir))))
+          :vars '((user-mail-address . "siagra@cs.ubc.ca")
+                  (user-full-name    . "Sid A")
+                  (mu4e-drafts-folder  . "/UBC/Drafts")
+                  (mu4e-sent-folder  . "/UBC/Sent")
+                  (mu4e-refile-folder  . "/UBC/Archives")
+                  (mu4e-trash-folder  . "/UBC/Trash")))))
+
+  (setq mu4e-maildir-shortcuts
+        '(("/Inbox"         . ?i)
+          ("/UBC/Sent"      . ?s)
+          ("/UBC/Trash"     . ?t)
+          ("/UBC/Drafts"    . ?d)
+          ("/UBC/Archives"  . ?a))))

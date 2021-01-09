@@ -132,3 +132,10 @@
     dest: /home/siagraw/.emacs.d/init.el
     state: link
     owner: siagraw
+
+- name: mbsyncrc symlink
+  file:
+    src: /home/siagraw/dotfiles/emacs.d/mbsyncrc
+    dest: /home/siagraw/.mbsyncrc
+    state: link
+    owner: siagraw

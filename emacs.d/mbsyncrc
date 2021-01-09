@@ -1,0 +1,25 @@
+IMAPAccount ubc
+Host mail.cs.ubc.ca
+User siagraw 
+PassCmd "cat ~/.oh-no-insecure-password"
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+IMAPStore ubc-remote
+Account ubc
+
+MaildirStore ubc-local
+Path ~/Mail/UBC/
+Inbox ~/Mail/UBC/Inbox/
+Trash ~/Mail/UBC/Trash/
+SubFolders Verbatim
+
+Channel ubc
+Master :ubc-remote:
+Slave :ubc-local:
+Patterns *
+Expunge None
+CopyArrivalDate yes
+Sync All
+Create Both
+SyncState *
