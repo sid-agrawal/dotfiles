@@ -2,22 +2,10 @@
   apt:
      name: ['htop', 'mc', 'tmux', 'zsh', 'neovim', 'git', 'ack', 'mosh', 'golang', 'curl', 'rubygems', 'tree', 'emacs', 'fzf']
 
-- name: Install emails related packages
-  apt:
-     name: ['graphviz', 'sqlite3', 'isync', 'mu4e']
-
-- name: Install package Ergodox config
-  apt:
-     name: ['libusb-dev']
-# need more steps, to have wally work.
-# See
-# https://github.com/zsa/wally/wiki/Linux-install
-     
 - name: Install pip packages
   apt:
      name: ['python3-pip']
 
-- name: Install fonts
   apt:
      name: ['fonts-cantarell', 'fonts-firacode']
 
@@ -27,27 +15,27 @@
 
 # Install iovior
 
-# - name: Add an apt key by id from a keyserver
-#   apt_key:
-#     keyserver: keyserver.ubuntu.com
-#     id: 4052245BD4284CDD
+- name: Add an apt key by id from a keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 4052245BD4284CDD
 
-# - apt_repository:
-#     repo: deb https://repo.iovisor.org/apt/bionic bionic main
-#     state: present
+- apt_repository:
+    repo: deb https://repo.iovisor.org/apt/bionic bionic main
+    state: present
 
-# - name: Update apt
-#   apt: update_cache=yes
+- name: Update apt
+  apt: update_cache=yes
 
-# - name: Install bcc packages
-#   apt:
-#      name: ['bcc-tools', 'libbcc-examples']
+- name: Install bcc packages
+  apt:
+     name: ['bcc-tools', 'libbcc-examples']
 
-# - name: Install bpftrace
-#   command: snap install bpftrace
+- name: Install bpftrace
+  command: snap install bpftrace
 
-# - name: Install linux headers
-#   vars:
-#      uname: "5.0.0-050000-generic"
-#   apt:
-#      name: ['linux-headers-{{ uname }}']
+- name: Install linux headers
+  vars:
+     uname: "5.8.0-53-generic"
+  apt:
+     name: ['linux-headers-{{ uname }}']
