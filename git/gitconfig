@@ -33,6 +33,7 @@
 [mergetool]
   prompt = false
 [color]
+	ui = auto
 	#ui = always
 [color "diff"]
 	meta = yellow bold
