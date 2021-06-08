@@ -10,3 +10,7 @@ Other steps:
 - git clone git@github.com:sid-agrawal/dotfiles.git
 
 - run the ansible playbook
+
+TODO:
+- User name is harded codes to siagraw, need to use ansible vars to make that a parameter
+- emacs is commented out
