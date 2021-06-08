@@ -112,3 +112,4 @@ export VISUAL=nvim
 
 # Required by gpg
 export GPG_TTY=$(tty)
+alias sel4c='make -C /home/siagraw/seL4-CAmkES-L4v-dockerfiles user HOST_DIR=$(pwd)'
