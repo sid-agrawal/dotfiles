@@ -14,3 +14,5 @@ Other steps:
 TODO:
 - User name is harded codes to siagraw, need to use ansible vars to make that a parameter
 - emacs is commented out
+- git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
