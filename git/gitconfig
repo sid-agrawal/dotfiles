@@ -1,7 +1,7 @@
 [user]
 	name = Sid Agrawal
-	email = agrawal.bitsg@gmail.com
-	signingkey = 78DC49C08426B9A2
+	email = sid@sid-agrawal.ca
+	signingkey = 6A0D80FDC22A2355A6469609B0A15180231D6AFE
 [alias]
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -27,6 +27,7 @@
 	prompt = false
 [commit]
         verbose = true
+	gpgsign = true
 [merge]
         tool = vimdiff
         conflictstyle = diff3
