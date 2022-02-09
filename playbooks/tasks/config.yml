@@ -105,6 +105,13 @@
     state: link
     owner: siagraw
 
+- name: python3 symlink
+  file:
+    src: /usr/bin/python3
+    dest: /usr/bin/python
+    state: link
+    owner: root
+
 - name: gitignore symlink
   file:
     src: /home/siagraw/dotfiles/git/gitignore
