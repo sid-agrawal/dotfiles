@@ -33,7 +33,7 @@ ZSH_THEME="my-simple"
 # add custom completion scripts
 fpath=(~/.zsh/functions ~/.zsh/completion ~/.zsh/completion/*(/N) $fpath)
 
-plugins=(golang git zsh_reload)
+plugins=(golang git)
 source $ZSH/oh-my-zsh.sh
 
 # Fuck you omz.

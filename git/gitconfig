@@ -27,7 +27,7 @@
 	prompt = false
 [commit]
         verbose = true
-	gpgsign = true
+	gpgsign = false
 [merge]
         tool = vimdiff
         conflictstyle = diff3
