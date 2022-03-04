@@ -126,6 +126,13 @@
     state: link
     owner: siagraw
 
+- name: gdbinit symlink
+  file:
+    src: /home/siagraw/dotfiles/gdb/gdbinit
+    dest: /home/siagraw/.gdbinit
+    state: link
+    owner: siagraw
+
 # - name: make .emacs.d dir
 #   file:
 #     path: /home/siagraw/.emacs.d
