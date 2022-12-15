@@ -71,6 +71,10 @@ export PATH=$PATH:/home/siagraw/bin:/usr/lib/ccache:/home/siagraw/bin:/usr/NX/bi
 export PYTHONSTARTUP=/home/siagraw/.python/startup.py
 export TMUX_TMPDIR=$HOME/tmux_tmpdir
 
+# ARM Internship - Summer 2022.
+# Point to morello tool chain which was installed to cheribuild. 
+export PATH=~/cheri/output/morello-sdk/bin:$PATH
+
 # oh my zsh adds this alias and it conflicts with the p4 wildcard
 for a in '...' '....' '.....' '......'; do 
    unalias $a
@@ -115,3 +119,5 @@ export GPG_TTY=$(tty)
 alias sel4c='make -C /home/siagraw/sel4/seL4-CAmkES-L4v-dockerfiles user HOST_DIR=$(pwd)'
 alias sel4v='make -C /home/siagraw/sel4/seL4-CAmkES-L4v-dockerfiles user_l4v HOST_DIR=$(pwd)'
 alias gec='/home/siagraw/genode-devel-docker/docker run'
+
+export CARGO_HOME=/home/siagraw/.cargo
