@@ -1,7 +1,7 @@
 alias vi='nvim'
 alias vim='nvim'
 alias less='less -r'
-alias grep='grep --color=auto -P'
+# alias grep='grep --color=auto -P'
 alias ls='ls --color=auto'
 alias ll='ls -la --color=auto'
 alias tree='tree -C'

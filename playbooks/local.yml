@@ -1,15 +1,6 @@
 ---
 - hosts: localhost
   become: true
-  pre_tasks:
-    - name: update repositories
-      apt: update_cache=yes
-      changed_when: False
 
   tasks:
-    - include: tasks/users.yml
-    - include: tasks/cron.yml
-    - include: tasks/packages.yml
-    - include: tasks/config.yml
-    #  - include: tasks/gnome.yml
-    #  - include: tasks/docker.yml
+    - import_tasks: tasks/config.yml

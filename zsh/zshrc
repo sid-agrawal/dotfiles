@@ -121,3 +121,8 @@ alias sel4v='make -C /home/siagraw/sel4/seL4-CAmkES-L4v-dockerfiles user_l4v HOS
 alias gec='/home/siagraw/genode-devel-docker/docker run'
 
 export CARGO_HOME=/home/siagraw/.cargo
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

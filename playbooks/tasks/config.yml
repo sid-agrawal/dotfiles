@@ -4,47 +4,47 @@
 - name: Clone oh my zsh
   git:
     repo: https://github.com/ohmyzsh/ohmyzsh.git
-    dest: /home/siagraw/.oh-my-zsh
+    dest: /Users/siagraw/.oh-my-zsh
 
 - name: symlink my-gnzh zsh theme to oh my zsh
   file:
-    src: /home/siagraw/dotfiles/zsh/themes/my-gnzh.zsh-theme
-    dest: /home/siagraw/.oh-my-zsh/themes/my-gnzh.zsh-theme
+    src: /Users/siagraw/dotfiles/zsh/themes/my-gnzh.zsh-theme
+    dest: /Users/siagraw/.oh-my-zsh/themes/my-gnzh.zsh-theme
     state: link
     owner: siagraw
 
 - name: symlink my-simple zsh theme to oh my zsh
   file:
-    src: /home/siagraw/dotfiles/zsh/themes/my-simple.zsh-theme
-    dest: /home/siagraw/.oh-my-zsh/themes/my-simple.zsh-theme
+    src: /Users/siagraw/dotfiles/zsh/themes/my-simple.zsh-theme
+    dest: /Users/siagraw/.oh-my-zsh/themes/my-simple.zsh-theme
     state: link
     owner: siagraw
 
 - name: zshrc symlink
   file:
-    src: /home/siagraw/dotfiles/zsh/zshrc
-    dest: /home/siagraw/.zshrc
+    src: /Users/siagraw/dotfiles/zsh/zshrc
+    dest: /Users/siagraw/.zshrc
     state: link
     owner: siagraw
 
 - name: zsh symlink
   file:
-    src: /home/siagraw/dotfiles/zsh
-    dest: /home/siagraw/.zsh
+    src: /Users/siagraw/dotfiles/zsh
+    dest: /Users/siagraw/.zsh
     state: link
     owner: siagraw
 
 - name: vim symlink
   file:
-    src: /home/siagraw/dotfiles/vim
-    dest: /home/siagraw/.vim
+    src: /Users/siagraw/dotfiles/vim
+    dest: /Users/siagraw/.vim
     state: link
     owner: siagraw
 
 - name: vimrc symlink
   file:
-    src: /home/siagraw/dotfiles/vim/vimrc
-    dest: /home/siagraw/.vimrc
+    src: /Users/siagraw/dotfiles/vim/vimrc
+    dest: /Users/siagraw/.vimrc
     state: link
     owner: siagraw
 
@@ -53,83 +53,65 @@
      url: https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
      dest: /usr/bin/vim
 
-- name: pip install many things
-  pip:
-    name: ['pyvim', 'neovim', 'python-language-server[all]']
-    executable: pip3
-
 - name: nvim config dir
   file:
-    path: /home/siagraw/.config/nvim
+    path: /Users/siagraw/.config/nvim
     state: directory
     owner: siagraw
 
 - name: nvim rc symlink
   file:
-    src: /home/siagraw/dotfiles/vim/vimrc
-    dest: /home/siagraw/.config/nvim/init.vim
+    src: /Users/siagraw/dotfiles/vim/vimrc
+    dest: /Users/siagraw/.config/nvim/init.vim
     state: link
     owner: siagraw
 
 - name: nvim autoload symlink
   file:
-    src: /home/siagraw/dotfiles/vim/autoload
-    dest: /home/siagraw/.config/nvim/autoload
+    src: /Users/siagraw/dotfiles/vim/autoload
+    dest: /Users/siagraw/.config/nvim/autoload
     state: link
     owner: siagraw
 
 - name: tmux symlink
   file:
-    src: /home/siagraw/dotfiles/tmux
-    dest: /home/siagraw/.tmux
+    src: /Users/siagraw/dotfiles/tmux
+    dest: /Users/siagraw/.tmux
     state: link
     owner: siagraw
 
 - name: tmux.conf symlink
   file:
-    src: /home/siagraw/dotfiles/tmux/tmux.conf
-    dest: /home/siagraw/.tmux.conf
+    src: /Users/siagraw/dotfiles/tmux/tmux.conf
+    dest: /Users/siagraw/.tmux.conf
     state: link
     owner: siagraw
 
 - name: make tmux dir
   file:
-    path: /home/siagraw/tmux_tmpdir
+    path: /Users/siagraw/tmux_tmpdir
     state: directory
     owner: siagraw
 
-- name: python symlink
-  file:
-    src: /home/siagraw/dotfiles/python
-    dest: /home/siagraw/.python
-    state: link
-    owner: siagraw
-
-- name: python3 symlink
-  file:
-    src: /usr/bin/python3
-    dest: /usr/bin/python
-    state: link
-    owner: root
 
 - name: gitignore symlink
   file:
-    src: /home/siagraw/dotfiles/git/gitignore
-    dest: /home/siagraw/.gitignore
+    src: /Users/siagraw/dotfiles/git/gitignore
+    dest: /Users/siagraw/.gitignore
     state: link
     owner: siagraw
 
 - name: gitconfig symlink
   file:
-    src: /home/siagraw/dotfiles/git/gitconfig
-    dest: /home/siagraw/.gitconfig
+    src: /Users/siagraw/dotfiles/git/gitconfig
+    dest: /Users/siagraw/.gitconfig
     state: link
     owner: siagraw
 
 - name: gdbinit symlink
   file:
-    src: /home/siagraw/dotfiles/gdb/gdbinit
-    dest: /home/siagraw/.gdbinit
+    src: /Users/siagraw/dotfiles/gdb/gdbinit
+    dest: /Users/siagraw/.gdbinit
     state: link
     owner: siagraw
 
