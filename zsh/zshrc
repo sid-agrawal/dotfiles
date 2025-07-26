@@ -75,6 +75,9 @@ export TMUX_TMPDIR=$HOME/tmux_tmpdir
 # Point to morello tool chain which was installed to cheribuild. 
 export PATH=~/cheri/output/morello-sdk/bin:$PATH
 
+# Docker
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+
 # oh my zsh adds this alias and it conflicts with the p4 wildcard
 for a in '...' '....' '.....' '......'; do 
    unalias $a
@@ -126,3 +129,7 @@ export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
