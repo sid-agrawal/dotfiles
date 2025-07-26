@@ -53,11 +53,6 @@
      url: https://github.com/neovim/neovim/releases/download/v0.4.3/nvim.appimage
      dest: /usr/bin/vim
 
-- name: pip install many things
-  pip:
-    name: ['pyvim', 'neovim', 'python-language-server[all]']
-    executable: pip3
-
 - name: nvim config dir
   file:
     path: /home/siagraw/.config/nvim
